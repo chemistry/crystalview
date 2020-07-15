@@ -1,2 +1,2 @@
-# crystalview
+# CrystalView
 Simple Crystal Viewer
