@@ -1,4 +1,7 @@
 # CrystalView
+[![GitHub Build Status](https://github.com/chemistry/crystalview/workflows/CI/badge.svg)](https://github.com/chemistry/crystalview/actions?query=workflow%3ACI)
+[![License: MIT](https://img.shields.io/badge/License-MIT-gren.svg)](https://opensource.org/licenses/MIT)
+
 Simple Crystal Viewer
 
 ## Quick start
