@@ -1,7 +1,5 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom";
+import * as React from 'react';
 
-ReactDOM.render(
-    <h1>test data</h1>,
-    document.getElementById("app"),
-);
+export const CrystalView = ()=> {
+    return (<h1>Crystal View</h1>)
+}

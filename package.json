@@ -30,8 +30,8 @@
         "verify": "npm run lint",
         "lint": "tslint -c tslint.json -p tsconfig.json 'src/**/*.tsx'",
         "lintfix": "tslint -c tslint.json -p tsconfig.json 'src/**/*.tsx' --fix",
-        "serve": "webpack-dev-server  --config ./webpack.config.js",
-        "build": "webpack-cli --config webpack.config.js --mode production",
+        "serve": "webpack-dev-server  --config ./webpack.demo.js",
+        "build": "webpack-cli --config webpack.js --mode production",
         "start": "npm run serve"
     },
     "dependencies": {

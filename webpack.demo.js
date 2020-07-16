@@ -11,7 +11,7 @@ module.exports = {
     devtool:  'source-map',
 
     entry: {
-        'app': path.resolve(__dirname, './src/index.tsx')
+        'app': path.resolve(__dirname, './demo/index.tsx')
     },
 
     output: {
@@ -27,7 +27,7 @@ module.exports = {
         }),
         new ExtractTextPlugin("[hash].css"),
         new HtmlWebpackPlugin({
-            template: __dirname + '/src/static/index.html'
+            template: __dirname + '/demo/index.html'
         })
     ],
 
