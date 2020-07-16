@@ -27,9 +27,36 @@
         "registry": "https://registry.npmjs.org/"
     },
     "scripts": {
-    },
-    "devDependencies": {
+        "verify": "npm run lint",
+        "lint": "tslint -c tslint.json -p tsconfig.json 'src/**/*.tsx'",
+        "lintfix": "tslint -c tslint.json -p tsconfig.json 'src/**/*.tsx' --fix",
+        "serve": "webpack-dev-server  --config ./webpack.config.js",
+        "build": "webpack-cli --config webpack.config.js --mode production",
+        "start": "npm run serve"
     },
     "dependencies": {
+        "autoprefixer": "9.8.5",
+        "bluebird": "3.7.2",
+        "classnames": "2.2.6",
+        "cross-env": "7.0.2",
+        "react": "16.13.1",
+        "react-dom": "16.13.1"
+    },
+    "devDependencies": {
+        "awesome-typescript-loader": "5.2.1",
+        "copy-webpack-plugin": "5.1.1",
+        "css-loader": "3.2.0",
+        "extract-text-webpack-plugin": "4.0.0-beta.0",
+        "file-loader": "4.2.0",
+        "html-webpack-plugin": "3.2.0",
+        "style-loader": "1.0.0",
+        "ts-node": "8.4.1",
+        "tslint": "5.20.0",
+        "tslint-react": "4.1.0",
+        "typescript": "3.6.4",
+        "url-loader": "2.2.0",
+        "webpack": "4.41.2",
+        "webpack-cli": "3.3.9",
+        "webpack-dev-server": "^3.11.0"
     }
 }
