@@ -12,4 +12,4 @@ Simple Crystal Viewer
 
 ## License
   This project is licensed under the MIT license, Copyright (c) 2020 Volodymyr Vreshch.
-  For more information see [LICENSE.md](https://github.com/chemistry/crystallography-api/blob/master/LICENSE.md).
+  For more information see [LICENSE.md](https://github.com/chemistry/crystalview/blob/master/LICENSE).
