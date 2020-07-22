@@ -35,12 +35,13 @@
         "start": "npm run serve"
     },
     "dependencies": {
+        "@reduxjs/toolkit": "1.4.0",
         "autoprefixer": "9.8.5",
-        "bluebird": "3.7.2",
-        "classnames": "2.2.6",
         "cross-env": "7.0.2",
         "react": "16.13.1",
-        "react-dom": "16.13.1"
+        "react-dom": "16.13.1",
+        "react-redux": "7.2.0",
+        "redux": "4.0.5"
     },
     "devDependencies": {
         "awesome-typescript-loader": "5.2.1",
