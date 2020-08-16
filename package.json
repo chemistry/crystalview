@@ -37,7 +37,7 @@
     "dependencies": {
         "@reduxjs/toolkit": "1.4.0",
         "autoprefixer": "9.8.5",
-        "cross-env": "7.0.2",
+        "@chemistry/space-groups": "2.9.0",
         "react": "16.13.1",
         "react-dom": "16.13.1",
         "react-redux": "7.2.0",
@@ -46,6 +46,7 @@
     "devDependencies": {
         "awesome-typescript-loader": "5.2.1",
         "css-loader": "3.6.0",
+        "cross-env": "7.0.2",
         "extract-text-webpack-plugin": "4.0.0-beta.0",
         "file-loader": "6.0.0",
         "html-webpack-plugin": "4.3.0",

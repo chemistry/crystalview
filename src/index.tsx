@@ -1,7 +1,7 @@
 import * as React from 'react';
-import { combineReducers, createStore, Store } from 'redux';
+import { combineReducers, configureStore, createReducer, EnhancedStore, getDefaultMiddleware} from "@reduxjs/toolkit";
 import { useSelector, Provider } from 'react-redux';
-import { optionsReducer, setBackground } from './store';
+import { optionsReducer, setBackground, loadMolecule, moleculeReducer } from './store';
 
 const App = () => {
     const ref = React.useRef();
@@ -26,21 +26,39 @@ export interface CrystalViewMethods {
     setBackground(color: string);
 }
 
-export const CrystalViewMethodsFactory = ({ store }: { store: Store<any, any> }) => {
+// create reducer as singletone
+const reducer = combineReducers({
+    options: optionsReducer,
+    molecule: moleculeReducer
+});
+export type RootState = ReturnType<typeof reducer>;
+
+
+export const CrystalViewMethodsFactory = ({ store }: { store: EnhancedStore<RootState> }) => {
+    const { dispatch } = store;
     return {
         setBackground: (color) => {
-            store.dispatch(setBackground(color))
+            dispatch(setBackground(color))
+        },
+        load: (jmol) => {
+            dispatch(loadMolecule(jmol))
         }
     }
 }
 
+const createStore = () => {
+    const isDevelopment = (process.env.NODE_ENV !== "production");
+    const middleware = getDefaultMiddleware();
+    return configureStore({
+        reducer,
+        middleware,
+        devTools: !isDevelopment,
+    });
+}
+
 export const CrystalView = React.forwardRef((props, ref) => {
-    const store = createStore(combineReducers({
-        options: optionsReducer
-    }));
-
+    const store = createStore();
     React.useImperativeHandle(ref, () => (CrystalViewMethodsFactory({ store })));
-
 
     return (
         <Provider store={store}>
