@@ -1,14 +1,14 @@
 import * as React from 'react';
-import { combineReducers, configureStore, createReducer, EnhancedStore, getDefaultMiddleware} from "@reduxjs/toolkit";
 import { useSelector, Provider } from 'react-redux';
-import { optionsReducer, setBackground, loadMolecule, moleculeReducer } from './store';
+import { EnhancedStore } from "@reduxjs/toolkit";
+import { setBackground, loadMolecule, createStore, RootState } from './store';
+import { SketcherContainer } from './sketcher';
 
-const App = () => {
-    const ref = React.useRef();
+const App = React.memo(() => {
     const backgroundColor = useSelector(state => state.options.backgroundColor);
 
     return (
-        <div style={{ "background-color": backgroundColor, "dispaly": "block" }} className="crystal-view">
+        <div style={{ "background-color": backgroundColor, "dispaly": "block", position: "relative" }} className="crystal-view">
         <style dangerouslySetInnerHTML={{__html: `
             .crystal-view { }
             .crystal-view:after {
@@ -17,22 +17,10 @@ const App = () => {
                 padding-bottom: 75%;
             }
         `}}/>
-        <canvas ref={ref}/>
+        <SketcherContainer />
     </div>
     )
-}
-
-export interface CrystalViewMethods {
-    setBackground(color: string);
-}
-
-// create reducer as singletone
-const reducer = combineReducers({
-    options: optionsReducer,
-    molecule: moleculeReducer
-});
-export type RootState = ReturnType<typeof reducer>;
-
+})
 
 export const CrystalViewMethodsFactory = ({ store }: { store: EnhancedStore<RootState> }) => {
     const { dispatch } = store;
@@ -46,15 +34,6 @@ export const CrystalViewMethodsFactory = ({ store }: { store: EnhancedStore<Root
     }
 }
 
-const createStore = () => {
-    const isDevelopment = (process.env.NODE_ENV !== "production");
-    const middleware = getDefaultMiddleware();
-    return configureStore({
-        reducer,
-        middleware,
-        devTools: !isDevelopment,
-    });
-}
 
 export const CrystalView = React.forwardRef((props, ref) => {
     const store = createStore();

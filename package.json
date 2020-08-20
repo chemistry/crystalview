@@ -35,9 +35,10 @@
         "start": "npm run serve"
     },
     "dependencies": {
+        "@chemistry/math": "^2.9.0",
+        "@chemistry/space-groups": "2.9.0",
         "@reduxjs/toolkit": "1.4.0",
         "autoprefixer": "9.8.5",
-        "@chemistry/space-groups": "2.9.0",
         "react": "16.13.1",
         "react-dom": "16.13.1",
         "react-redux": "7.2.0",
