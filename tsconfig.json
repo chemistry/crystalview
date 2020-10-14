@@ -2,24 +2,22 @@
     "compilerOptions": {
         "module": "commonjs",
         "target": "es5",
-        "noImplicitAny": false,
+        "noImplicitAny": true,
         "moduleResolution": "node",
-        "sourceMap": false,
-        "declaration": false,
-        "types": [
-            "node"
-        ],
+        "sourceMap": true,
+        "declaration": true,
+        "types": ["jasmine"],
         "outDir": "dist",
-        "jsx": "react",
-        "baseUrl": ".",
-        "paths": {
-            "*": [
-                "node_modules/*"
-            ]
-        }
+        "lib": [
+            "dom",
+            "es5",
+            "es2015.iterable"
+        ]
     },
 
     "rules": {
+        "object-literal-sort-keys": false,
+        "interface-name": false
     },
 
     "exclude": [
@@ -32,7 +30,7 @@
         "useWebpackText": true
     },
 
-    "include": [
-        "src/**/*"
-    ]
+    "atom": {
+        "rewriteTsconfig": false
+    }
 }
