@@ -2,7 +2,7 @@ import * as React from 'react';
 import { useSelector, Provider } from 'react-redux';
 import { EnhancedStore } from "@reduxjs/toolkit";
 import { setBackground, loadMolecule, createStore, RootState } from './store';
-import { SketcherContainer } from './sketcher';
+import { SketcherContainer, Vis } from './sketcher';
 
 const App = React.memo(() => {
     const backgroundColor = useSelector(state => state.options.backgroundColor);
@@ -17,7 +17,7 @@ const App = React.memo(() => {
                 padding-bottom: 75%;
             }
         `}}/>
-        <SketcherContainer />
+        <Vis />
     </div>
     )
 })

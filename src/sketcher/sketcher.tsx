@@ -1,48 +1,122 @@
 import * as React from 'react';
-import { useSelector } from 'react-redux';
-import { getProjectionMatrix } from '../store/camera';
-import { Atom } from '../entities';
-import { getPainter, Painter } from './painter';
-import { Transform3D, Vec3 } from '@chemistry/math';
+import { useRef, useEffect } from 'react';
+import { Scene, PerspectiveCamera, WebGLRenderer, BoxGeometry, MeshBasicMaterial, Mesh, SphereGeometry, MeshNormalMaterial } from 'three';
+const { useRef, useEffect, useState } = React;
 
 
 export const SketcherContainer = React.memo(() => {
-    const atoms  = useSelector(state => state.molecule.atoms);
-    const projection: Transform3D = useSelector(getProjectionMatrix);
-    const backgroundColor = useSelector(state => state.options.backgroundColor);
+    const mount = useRef(null);
+    const controls = useRef(null);
 
-    return (<Sketcher atoms={atoms} projection={projection} backgroundColor={backgroundColor} />)
+    useEffect(() => {
+        const scene = new Scene();
+        const camera = new PerspectiveCamera( 75, 1, 0.1, 1000 );
+        const renderer = new WebGLRenderer();
+    }, []);
 });
 
-const Sketcher = ({
-    atoms,
-    projection,
-    backgroundColor
-}: any) => {
-    const ref = React.useRef();
-    if (ref && ref.current) {
-        const painter = getPainter(ref.current.getContext("2d"));
-        painter.clear(backgroundColor);
-        painter.center();
-        drawAtoms({ painter, atoms, projection });
-    }
-
-    return (<canvas style={{ position: 'absolute', top: '0', left: '0', right: '0', bottom: '0', width: '100%', height: '100%' }} ref={ref}/>)
+const useElementSize = (mount: any)=> {
+    let width = mount.current.clientWidth;
+    let height = mount.current.clientHeight;
+    // width, height
 }
 
-const drawAtoms = ({
-    painter,
-    atoms,
-    projection
-}: {
-    painter: Painter,
-    atoms: Atom[],
-    projection: Transform3D
-}) => {
 
-    atoms.forEach((atom) => {
-        const SCALE = 10;
-        const position = projection.project(new Vec3(atom.x * SCALE, atom.y * SCALE, atom.z * SCALE));
-        painter.circle(position.x, position.y, 1, 'red');
-    });
+
+// Based on
+//  - https://github.com/lsgng/react-redux-three
+//  - https://github.com/lsgng/react-redux-three
+
+
+export const Vis = () => {
+    const mount = React.useRef<HTMLDivElement>();
+    const controls = useRef(null);
+    const [isAnimating, setAnimating] = useState(true);
+
+
+    useEffect(() => {
+        let width = mount.current.clientWidth;
+        let height = mount.current.clientHeight;
+        let frameId;
+
+        const scene = new Scene();
+        const camera = new PerspectiveCamera(75, width / height, 0.1, 1000);
+        const renderer = new WebGLRenderer({ antialias: true });
+        const geometry = new BoxGeometry(1, 1, 1);
+        const material = new MeshNormalMaterial();// MeshBasicMaterial({ color: 0xff00ff });
+        const cube = new Mesh(geometry, material);
+
+
+        const geometry2 = new SphereGeometry(0.4, 32, 32);
+        const sphere = new Mesh(geometry2, material);
+
+
+        camera.position.z = 4;
+        // scene.add(cube);
+        scene.add(sphere);
+
+        renderer.setClearColor('#000000')
+        renderer.setSize(width, height)
+
+        const renderScene = () => {
+            renderer.render(scene, camera)
+        }
+
+        const handleResize = () => {
+            width = mount.current.clientWidth
+            height = mount.current.clientHeight
+            renderer.setSize(width, height)
+            camera.aspect = width / height
+            camera.updateProjectionMatrix()
+            renderScene()
+        }
+
+        const animate = () => {
+            cube.rotation.x += 0.01
+            cube.rotation.y += 0.01
+
+            renderScene()
+            frameId = window.requestAnimationFrame(animate)
+        }
+
+        const start = () => {
+            if (!frameId) {
+            frameId = requestAnimationFrame(animate)
+            }
+        }
+
+        const stop = () => {
+            cancelAnimationFrame(frameId)
+            frameId = null
+        }
+
+        mount.current.appendChild(renderer.domElement)
+        window.addEventListener('resize', handleResize)
+        start()
+
+        controls.current = { start, stop }
+
+        return () => {
+            stop()
+            window.removeEventListener('resize', handleResize)
+            mount.current.removeChild(renderer.domElement)
+
+            scene.remove(cube)
+            geometry.dispose()
+            material.dispose()
+        }
+    }, []);
+
+    useEffect(() => {
+      if (isAnimating) {
+        controls.current.start()
+      } else {
+        controls.current.stop()
+      }
+    }, [isAnimating])
+
+    return <div
+        style={{ "width": "100%", "height": "100%", position: "absolute" }}
+        ref={mount} onClick={() => setAnimating(!isAnimating)}
+    />
 }
