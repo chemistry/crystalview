@@ -4,7 +4,6 @@
 
 Simple Crystal Viewer - v1
 
-
 ## How to use
 ```javascript
 import { Mol3DView }  from '@chemistry/crystalview';
