@@ -36,6 +36,11 @@ jobs:
     - name: Get Release version
       run: echo $RELEASE_VERSION
 
+    - name: Update Git Identity
+      run: git config --global user.name '@vreshch' && git config --global user.email 'vreshch@gmail.com' && git remote set-url origin https://x-access-token:${GITHUB_TOKEN}@github.com/$GITHUB_REPOSITORY
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
     - name: Setup npmrc File
       run: echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > .npmrc
 
