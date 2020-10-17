@@ -2,6 +2,8 @@
     "name": "@chemistry/crystalview",
     "version": "1.0.0",
     "description": "Simple Crystal Viewer v1",
+    "main": "dist/crystal-view.js",
+    "typings": "dist/src/crystal-view.d.ts",
     "author": {
         "name": "Volodymyr Vreshch",
         "url": "http://vreshch.com/"
@@ -25,10 +27,16 @@
     "publishConfig": {
         "registry": "https://registry.npmjs.org/"
     },
+    "files": [
+        "package-lock.json",
+        "package.json",
+        "dist",
+        "README.md"
+    ],
     "scripts": {
         "build": "npm run clean && npm run build:prod",
-        "build:dev": "webpack --output-filename mol3dview.js --config etc/webpack.config.dev.js",
-        "build:prod": "webpack --output-filename mol3dview.min.js --config etc/webpack.config.prd.js",
+        "build:dev": "webpack --output-filename crystal-view.js --config etc/webpack.config.dev.js",
+        "build:prod": "webpack --output-filename crystal-view.min.js --config etc/webpack.config.prd.js",
         "serve": "webpack-dev-server --config ./etc/webpack.config.example.js",
         "clean": "rimraf dist/* coverage/*",
         "test": "rimraf coverage/* && npm run test:node && npm run test:browser && npm run test:node-coverage",

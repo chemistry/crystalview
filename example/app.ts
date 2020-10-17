@@ -1,4 +1,4 @@
-import { Mol3DView }  from '../src/mol3dview';
+import { Mol3DView }  from '../src/crystal-view';
 import structure from './1518815';
 // import structure from './1000009';
 

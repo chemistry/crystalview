@@ -3,14 +3,14 @@ const path = require('path');
 module.exports = {
 
     entry: {
-        'mol3dview': path.resolve(__dirname, '../src/mol3dview')
+        'crystal-view': path.resolve(__dirname, '../src/crystal-view')
     },
 
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: "[name].js",
         libraryTarget: 'umd',
-        library: 'mol3dview',
+        library: 'crystal-view',
         umdNamedDefine: true
     },
 

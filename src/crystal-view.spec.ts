@@ -1,4 +1,4 @@
-import { Mol3DView } from "./mol3dview";
+import { Mol3DView } from "./crystal-view";
 
 describe("molview", () => {
     it("should be defined", () => {

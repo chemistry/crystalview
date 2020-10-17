@@ -6,7 +6,7 @@ const path = require('path');
 module.exports = Object.assign({}, baseConfig, {
 
     entry: {
-        'molview': path.resolve(__dirname, '../example/app.ts')
+        'crystal-view': path.resolve(__dirname, '../example/app.ts')
     },
 
     devtool: 'source-map',
