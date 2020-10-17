@@ -7,7 +7,6 @@
         "url": "http://vreshch.com/"
     },
     "license": "MIT",
-    "private": true,
     "keywords": [
         "cheminformatics",
         "crystallography",
