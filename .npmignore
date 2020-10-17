@@ -1,4 +1,13 @@
 #npm node modules
+etc
+example
+.github
+.editorconfig
+LICENSE
+postcss.config.js
+set-version.js
+tsconfig.json
+tslint.json
 node_modules
 coverage
 build
