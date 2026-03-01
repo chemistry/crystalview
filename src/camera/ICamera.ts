@@ -1,14 +1,14 @@
-import { Vec3 } from "@chemistry/math";
+import { Vec3 } from '@chemistry/math';
 
 export interface ICamera {
-    onInit(): void;
-    onDestroy(): void;
+  onInit(): void;
+  onDestroy(): void;
 
-    project(position: Vec3): Vec3;
-    unproject(position: Vec3): Vec3;
+  project(position: Vec3): Vec3;
+  unproject(position: Vec3): Vec3;
 
-    extractScale(): number;
-/*
+  extractScale(): number;
+  /*
     setCameraView
     setCameraCenter
     setCameraScale

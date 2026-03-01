@@ -1,76 +1,88 @@
 export class ContextMenuItem {
+  private type: string;
+  private title: string;
+  private isChecked: (() => boolean) | undefined;
+  private command: ((event: Event) => void) | undefined;
 
-    private type: string;
-    private title: string;
-    private isChecked: () => void;
-    private command: (event: any) => void;
+  private view: HTMLElement | null;
+  private checkbox: HTMLInputElement | null;
 
-    private view: any;
-    private checkbox: any;
+  constructor(options: {
+    type: string;
+    title: string;
+    isChecked?: () => boolean;
+    command?: (event: Event) => void;
+  }) {
+    this.type = options.type;
+    this.title = options.title;
+    this.isChecked = options.isChecked;
+    this.command = options.command;
+    this.view = null;
+    this.checkbox = null;
+  }
 
-    constructor(options: { type: string, title: string, isChecked?: () => void, command?: (event: any) => void }) {
-        this.type = options.type;
-        this.title = options.title;
-        this.isChecked = options.isChecked;
-        this.command = options.command;
+  public onDestroy() {
+    if (this.view?.parentNode) {
+      this.view.parentNode.removeChild(this.view);
+    }
+  }
+
+  public getView(): HTMLElement {
+    if (this.view) {
+      return this.view;
     }
 
-    public onDestroy() {
-        if (this.view) {
-            this.view.remove();
-        }
+    if (this.type === 'delimer' || this.title === '----') {
+      const view = document.createElement('div');
+      view.className = 'jcmolview-dropdown-divider';
+      this.view = view;
+      return view;
     }
 
-    public getView(): any {
-        if (this.view) {
-            return this.view;
+    if (this.type === 'item') {
+      const view = document.createElement('a');
+      view.className = 'jcmolview-dropdown-item';
+      view.textContent = this.title || '';
+      this.view = view;
+
+      this.view.addEventListener('click', (event: Event) => {
+        if (this.command) {
+          this.command(event);
         }
-
-        if (this.type === "delimer" || this.title === "----") {
-            const view = $('<div class="jcmolview-dropdown-divider"></div>');
-            this.view = view;
-            return view;
-        }
-
-        if (this.type === "item" ) {
-            const view = $('<a class="jcmolview-dropdown-item"></a>');
-            view.text(this.title || "");
-            this.view = view;
-
-            this.view.on("click", (event: any) => {
-                if (this.command) {
-                    this.command(event);
-                }
-            });
-            return view;
-        }
-
-        if (this.type === "checkbox") {
-            const view = $('<div class="jcmolview-dropdown-item"></div>');
-            view.text(this.title || "");
-            this.checkbox = $('<input type="checkbox" checked />');
-            this.updateCheckBox();
-            view.prepend(this.checkbox);
-
-            view.on("click", (event: any) => {
-                if (this.command) {
-                    this.command(event);
-                }
-                this.updateCheckBox();
-            });
-
-            this.view = view;
-            return view;
-        }
-
-        return $("<div></div>");
+      });
+      return view;
     }
 
-    private updateCheckBox() {
-        if (this.isChecked && this.checkbox) {
-            const checked = !!this.isChecked();
+    if (this.type === 'checkbox') {
+      const view = document.createElement('div');
+      view.className = 'jcmolview-dropdown-item';
+      this.checkbox = document.createElement('input');
+      this.checkbox.type = 'checkbox';
+      this.checkbox.checked = true;
+      this.updateCheckBox();
+      view.appendChild(this.checkbox);
+      view.appendChild(document.createTextNode(this.title || ''));
 
-            this.checkbox.prop("checked", checked);
+      view.addEventListener('click', (event: Event) => {
+        if (this.command) {
+          this.command(event);
         }
+        this.updateCheckBox();
+      });
+
+      this.view = view;
+      return view;
     }
+
+    const fallback = document.createElement('div');
+    this.view = fallback;
+    return fallback;
+  }
+
+  private updateCheckBox() {
+    if (this.isChecked && this.checkbox) {
+      const checked = this.isChecked();
+      this.checkbox.checked = checked;
+    }
+  }
 }
