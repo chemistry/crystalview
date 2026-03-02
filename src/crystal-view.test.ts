@@ -29,7 +29,7 @@ describe('Mol3DView', () => {
       const view = new Mol3DView({});
       const container = document.createElement('div');
       view.append(container);
-      expect(() => view.append(container)).toThrow('append or init were alredy done');
+      expect(() => view.append(container)).toThrow('append or init were already done');
     });
 
     it('should set background color on the view element', () => {
