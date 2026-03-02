@@ -8,12 +8,4 @@ export interface ICamera {
   unproject(position: Vec3): Vec3;
 
   extractScale(): number;
-  /*
-    setCameraView
-    setCameraCenter
-    setCameraScale
-    extractScale
-    getDefaultAction
-    setDefaultAction
-*/
 }

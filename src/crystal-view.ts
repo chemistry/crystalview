@@ -15,7 +15,7 @@ export class Mol3DView {
   private subscriptions: (() => void)[];
   private molecule: Molecule3D;
 
-  private painer!: Painter;
+  private painter!: Painter;
   private camera!: Camera;
   private contextMenu!: ContextMenu;
 
@@ -40,7 +40,7 @@ export class Mol3DView {
 
   public append(element: HTMLElement) {
     if (this.viewElement || this.initDone) {
-      throw new Error('append or init were alredy done');
+      throw new Error('append or init were already done');
     }
 
     const viewEl = document.createElement('div');
@@ -62,14 +62,14 @@ export class Mol3DView {
     this.canvasElement = canvas;
     this.context = this.canvasElement.getContext('2d')!;
 
-    this.painer = new Painter(this.context, this.options);
+    this.painter = new Painter(this.context, this.options);
     this.camera = new Camera({
       element: this.canvasElement as HTMLElement,
       onClick: (x: number, y: number) => {
         if (!this.options.showMarkers) {
           return;
         }
-        const marker = this.painer.uprojectToMarker({
+        const marker = this.painter.uprojectToMarker({
           camera: this.camera,
           molecule: this.molecule,
           x,
@@ -193,13 +193,13 @@ export class Mol3DView {
       return;
     }
 
-    this.painer.draw(this.molecule, this.camera);
+    this.painter.draw(this.molecule, this.camera);
   }
 
   private resizeCanvas() {
     const width = this.viewElement.clientWidth;
     const height = this.viewElement.clientHeight;
-    // Same width alredy seted
+    // Same dimensions already set
     if (width === this.width && height === this.height) {
       return;
     }
