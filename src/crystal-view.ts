@@ -64,7 +64,7 @@ export class Mol3DView {
 
     this.painter = new Painter(this.context, this.options);
     this.camera = new Camera({
-      element: this.canvasElement as HTMLElement,
+      element: this.canvasElement,
       onClick: (x: number, y: number) => {
         if (!this.options.showMarkers) {
           return;
