@@ -1,17 +1,18 @@
 name: Release Train
 
 # Fully automated Friday MINOR release of @chemistry/crystalview to npm.
-# Level 1 train: depends on the @chemistry base packages (released 20:00 Prague),
-# so this runs an hour later at 21:00. Always a minor bump; internal @chemistry/*
-# dependency changes alone justify a release.
+# Level 1 train: depends on the @chemistry base packages (L0, chemical-libraries,
+# runs 19:00 UTC), so this runs an hour later. Always a minor bump; internal
+# @chemistry/* dependency changes alone justify a release.
+#
+# Single UTC cron - no Prague/DST gate. If GitHub fires the cron late, the
+# train just departs late instead of being gated away.
 #
 # GITHUB_TOKEN caveat: its merges/tag-pushes never fire tag-triggered workflows,
 # so after merging the release PR this train dispatches release.yml explicitly
 # (workflow_dispatch releases the current package.json version).
 on:
   schedule:
-    # Friday 21:00 Europe/Prague across both DST offsets; the gate job filters.
-    - cron: '0 19 * * 5'
     - cron: '0 20 * * 5'
   workflow_dispatch:
 
@@ -21,33 +22,8 @@ permissions:
   actions: write
 
 jobs:
-  prague-gate:
-    name: 🕘 Friday 21:00 Prague gate
-    runs-on: ubuntu-latest
-    timeout-minutes: 5
-    outputs:
-      go: ${{ steps.gate.outputs.go }}
-    steps:
-      - name: Check local Prague hour (DST-proof)
-        id: gate
-        run: |
-          if [ "${{ github.event_name }}" != "schedule" ]; then
-            echo "workflow_dispatch - bypassing hour gate."
-            echo "go=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-          HOUR=$(TZ=Europe/Prague date +%H)
-          if [ "$HOUR" = "21" ]; then
-            echo "go=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "Prague hour is $HOUR, not 21 - wrong DST cron slot, skipping."
-            echo "go=false" >> "$GITHUB_OUTPUT"
-          fi
-
   merge-green-dependabot:
     name: 🤖 Merge passing dependabot PRs
-    needs: prague-gate
-    if: needs.prague-gate.outputs.go == 'true'
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
@@ -88,8 +64,7 @@ jobs:
 
   release:
     name: 🚝 Cut minor release
-    needs: [prague-gate, merge-green-dependabot]
-    if: needs.prague-gate.outputs.go == 'true'
+    needs: merge-green-dependabot
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
