@@ -1,6 +1,6 @@
 {
   "name": "@chemistry/crystalview",
-  "version": "3.1.4",
+  "version": "3.1.5",
   "description": "Crystal Structure Visualization Library",
   "type": "module",
   "author": {
@@ -53,9 +53,9 @@
     "verify": "npm run type-check && npm run lint && npm run format:check && npm run test && npm run build"
   },
   "dependencies": {
-    "@chemistry/elements": "^3.6.2",
-    "@chemistry/math": "^3.6.2",
-    "@chemistry/space-groups": "^3.6.2"
+    "@chemistry/elements": "^3.6.3",
+    "@chemistry/math": "^3.6.3",
+    "@chemistry/space-groups": "^3.6.3"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.0",
