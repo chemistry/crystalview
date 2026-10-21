@@ -55,7 +55,7 @@ src/
 
 ## Publishing
 
-Published to npm as `@chemistry/crystalview`. **Never run `npm publish` manually** — tag `v*` and push to trigger the release pipeline.
+Published to npm as `@chemistry/crystalview`. **Never run `npm publish` manually** - `prepare-release.yml` opens a `chore(release)` PR and `release.yml` publishes on its merge (OIDC).
 
 ## Standards
 
