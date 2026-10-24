@@ -1,6 +1,6 @@
 {
   "name": "@chemistry/crystalview",
-  "version": "3.1.12",
+  "version": "3.1.13",
   "description": "Crystal Structure Visualization Library",
   "type": "module",
   "author": {
