@@ -1,7 +1,7 @@
 import { Vec3 } from '@chemistry/math';
 import type { ICamera } from '../camera/ICamera.js';
-import { Marker } from '../molecule3d/Marker.js';
-import { Molecule3D } from '../molecule3d/Molecule3D.js';
+import { type Marker } from '../molecule3d/Marker.js';
+import { type Molecule3D } from '../molecule3d/Molecule3D.js';
 import { CanvasContext } from './CanvasContext.js';
 
 const ATOM_RADIUS_FACTOR = 0.25;
@@ -68,9 +68,7 @@ export class Painter {
       this.prepareLabels(molecule, camera);
     }
 
-    this.zBuffer.sort((i1, i2) => {
-      return i1.z - i2.z;
-    });
+    this.zBuffer.sort((i1, i2) => i1.z - i2.z);
     this.drawZBuffer();
 
     context.restore();

@@ -1,26 +1,43 @@
-import eslint from '@eslint/js';
+import { defineConfig } from 'eslint/config';
+import prettierConfig from 'eslint-config-prettier';
+import prettierPlugin from 'eslint-plugin-prettier';
 import tseslint from 'typescript-eslint';
 
-export default tseslint.config(
-  eslint.configs.recommended,
-  ...tseslint.configs.strictTypeChecked,
-  ...tseslint.configs.stylisticTypeChecked,
+export default defineConfig(
+  { ignores: ['dist/', 'node_modules/', 'coverage/', 'showcase/'] },
   {
+    files: ['**/*.ts'],
+    extends: [tseslint.configs.strictTypeChecked, tseslint.configs.stylisticTypeChecked],
     languageOptions: {
       parserOptions: {
         project: './tsconfig.eslint.json',
         tsconfigRootDir: import.meta.dirname,
       },
     },
+    plugins: { prettier: prettierPlugin },
     rules: {
-      'prefer-const': 'error',
-      'no-var': 'error',
-      curly: 'error',
+      ...prettierConfig.rules,
+      'prettier/prettier': 'error',
       '@typescript-eslint/no-explicit-any': 'error',
+      '@typescript-eslint/consistent-type-imports': [
+        'error',
+        { prefer: 'type-imports', fixStyle: 'inline-type-imports' },
+      ],
+      'no-unused-vars': 'off',
       '@typescript-eslint/no-unused-vars': [
         'error',
         { argsIgnorePattern: '^_', varsIgnorePattern: '^_' },
       ],
+      '@typescript-eslint/naming-convention': [
+        'error',
+        { selector: 'interface', format: ['PascalCase'], custom: { regex: '^[A-Z]', match: true } },
+        { selector: 'typeAlias', format: ['PascalCase'] },
+      ],
+      'prefer-const': 'error',
+      'prefer-arrow-callback': 'error',
+      'arrow-body-style': ['error', 'as-needed'],
+      'no-var': 'error',
+      curly: 'error',
       '@typescript-eslint/no-deprecated': 'off',
       '@typescript-eslint/no-extraneous-class': 'off',
       '@typescript-eslint/restrict-plus-operands': 'off',
@@ -39,15 +56,11 @@ export default tseslint.config(
     files: ['**/*.test.ts'],
     rules: {
       '@typescript-eslint/no-explicit-any': 'off',
-      '@typescript-eslint/no-non-null-assertion': 'off',
       '@typescript-eslint/unbound-method': 'off',
       '@typescript-eslint/no-empty-function': 'off',
       '@typescript-eslint/no-confusing-void-expression': 'off',
       '@typescript-eslint/no-unused-vars': 'off',
       '@typescript-eslint/non-nullable-type-assertion-style': 'off',
     },
-  },
-  {
-    ignores: ['dist/', 'node_modules/', 'coverage/', 'showcase/'],
   }
 );

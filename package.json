@@ -58,9 +58,10 @@
     "@chemistry/space-groups": "^3.6.9"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.0",
     "@vitest/coverage-v8": "^5.0.0",
     "eslint": "^10.0.0",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-prettier": "^5.5.7",
     "jsdom": "^30.0.1",
     "prettier": "^3.4.0",
     "typescript": "^6.0.3",

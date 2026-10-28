@@ -1,4 +1,4 @@
-import { Vec3 } from '@chemistry/math';
+import { type Vec3 } from '@chemistry/math';
 
 export class MarkerContact {
   public position1: Vec3;

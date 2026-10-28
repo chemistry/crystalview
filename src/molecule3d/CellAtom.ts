@@ -1,8 +1,8 @@
-import { ChemElements, ChemElementInfo } from '@chemistry/elements';
-import { Matrix3x4, Vec3 } from '@chemistry/math';
+import { ChemElements, type ChemElementInfo } from '@chemistry/elements';
+import { type Matrix3x4, Vec3 } from '@chemistry/math';
 import { Atom } from './Atom.js';
 import { Link } from './Link.js';
-import { UnitCell } from './UnitCell.js';
+import { type UnitCell } from './UnitCell.js';
 
 export class CellAtom {
   /**

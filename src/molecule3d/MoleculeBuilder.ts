@@ -1,10 +1,10 @@
-import { Matrix3x4, Vec3 } from '@chemistry/math';
-import { Atom } from './Atom.js';
+import { type Matrix3x4, type Vec3 } from '@chemistry/math';
+import { type Atom } from './Atom.js';
 import { Bond } from './Bond.js';
-import { CellAtom } from './CellAtom.js';
+import { type CellAtom } from './CellAtom.js';
 import { Marker } from './Marker.js';
 import { MarkerContact } from './MarkerContact.js';
-import { Molecule3D } from './Molecule3D.js';
+import { type Molecule3D } from './Molecule3D.js';
 import { UnitCell } from './UnitCell.js';
 
 export class MoleculeBuilder {

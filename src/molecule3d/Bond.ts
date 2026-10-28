@@ -1,4 +1,4 @@
-import { Atom } from './Atom.js';
+import { type Atom } from './Atom.js';
 
 export class Bond {
   public atom1: Atom;

@@ -1,14 +1,14 @@
 import { Vec3 } from '@chemistry/math';
-import { Atom } from './Atom.js';
-import { Bond } from './Bond.js';
+import { type Atom } from './Atom.js';
+import { type Bond } from './Bond.js';
 import { CellAtom } from './CellAtom.js';
-import { IMoleculeReader } from './io/IMoleculeReader.js';
+import { type IMoleculeReader } from './io/IMoleculeReader.js';
 import { MoleculeReaderJCIF } from './io/MoleculeReaderJCIF.js';
-import { Marker } from './Marker.js';
-import { MarkerContact } from './MarkerContact.js';
+import { type Marker } from './Marker.js';
+import { type MarkerContact } from './MarkerContact.js';
 import { MoleculeBuilder } from './MoleculeBuilder.js';
 import { MoleculeConnector } from './MoleculeConnector.js';
-import { UnitCell } from './UnitCell.js';
+import { type UnitCell } from './UnitCell.js';
 
 export class Molecule3D {
   public title: string;

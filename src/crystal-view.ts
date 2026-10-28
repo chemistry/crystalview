@@ -102,9 +102,7 @@ export class Mol3DView {
           this.options.showMarkers = !this.options.showMarkers;
           this.redraw();
         },
-        isChecked: () => {
-          return this.options.showMarkers;
-        },
+        isChecked: () => this.options.showMarkers,
         title: 'Show Markers',
         type: 'checkbox',
       }),
@@ -113,9 +111,7 @@ export class Mol3DView {
           this.options.showUnitCell = !this.options.showUnitCell;
           this.redraw();
         },
-        isChecked: () => {
-          return this.options.showUnitCell;
-        },
+        isChecked: () => this.options.showUnitCell,
         title: 'Show Unit Cell',
         type: 'checkbox',
       }),
@@ -124,9 +120,7 @@ export class Mol3DView {
           this.options.showLabels = !this.options.showLabels;
           this.redraw();
         },
-        isChecked: () => {
-          return this.options.showLabels;
-        },
+        isChecked: () => this.options.showLabels,
         title: 'Show Labels',
         type: 'checkbox',
       }),

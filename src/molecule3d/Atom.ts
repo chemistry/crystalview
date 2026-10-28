@@ -1,5 +1,5 @@
-import { Matrix3x4, Vec3 } from '@chemistry/math';
-import { CellAtom } from './CellAtom.js';
+import { type Matrix3x4, type Vec3 } from '@chemistry/math';
+import { type CellAtom } from './CellAtom.js';
 
 export class Atom {
   public fractional: Vec3;

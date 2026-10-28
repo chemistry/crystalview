@@ -1,4 +1,4 @@
-import { Molecule3D } from '../Molecule3D.js';
+import { type Molecule3D } from '../Molecule3D.js';
 
 export interface IMoleculeReader {
   name: string;
