@@ -1,8 +1,8 @@
 import { describe, it, expect } from 'vitest';
 import { Matrix3x4, Vec3 } from '@chemistry/math';
 import { SpaceGroup } from '@chemistry/space-groups';
-import { CellAtom } from './CellAtom.js';
-import { UnitCell } from './UnitCell.js';
+import { CellAtom } from './cell-atom.js';
+import { UnitCell } from './unit-cell.js';
 
 function createUnitCell() {
   const sg = SpaceGroup.getByHMName('P 1')!;

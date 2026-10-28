@@ -1,7 +1,7 @@
 import { SpaceGroup } from '@chemistry/space-groups';
-import { Molecule3D } from '../Molecule3D.js';
-import { UnitCell } from '../UnitCell.js';
-import { IMoleculeReader } from './IMoleculeReader.js';
+import { type Molecule3D } from '../molecule3d.js';
+import { UnitCell } from '../unit-cell.js';
+import { type IMoleculeReader } from './molecule-reader.interface.js';
 
 interface JcifData {
   a: string;
@@ -159,9 +159,7 @@ export class MoleculeReaderJCIF implements IMoleculeReader {
 
   private extractCoordLoop(data: JcifData): JcifLoop[] {
     if (Array.isArray(data.loops)) {
-      return data.loops.filter((loopItem) => {
-        return loopItem.columns.includes('_atom_site_fract_x');
-      });
+      return data.loops.filter((loopItem) => loopItem.columns.includes('_atom_site_fract_x'));
     }
     return [];
   }

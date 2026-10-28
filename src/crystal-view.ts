@@ -1,8 +1,8 @@
-import { Camera } from './camera/Camera.js';
-import { Molecule3D } from './molecule3d/Molecule3D.js';
-import { Painter } from './painter/Painter.js';
-import { ContextMenu } from './ui/ContextMenu.js';
-import { ContextMenuItem } from './ui/ContextMenuItem.js';
+import { Camera } from './camera/camera.js';
+import { Molecule3D } from './molecule3d/molecule3d.js';
+import { Painter } from './painter/painter.js';
+import { ContextMenu } from './ui/context-menu.js';
+import { ContextMenuItem } from './ui/context-menu-item.js';
 
 export class Mol3DView {
   private viewElement!: HTMLDivElement;
@@ -102,9 +102,7 @@ export class Mol3DView {
           this.options.showMarkers = !this.options.showMarkers;
           this.redraw();
         },
-        isChecked: () => {
-          return this.options.showMarkers;
-        },
+        isChecked: () => this.options.showMarkers,
         title: 'Show Markers',
         type: 'checkbox',
       }),
@@ -113,9 +111,7 @@ export class Mol3DView {
           this.options.showUnitCell = !this.options.showUnitCell;
           this.redraw();
         },
-        isChecked: () => {
-          return this.options.showUnitCell;
-        },
+        isChecked: () => this.options.showUnitCell,
         title: 'Show Unit Cell',
         type: 'checkbox',
       }),
@@ -124,9 +120,7 @@ export class Mol3DView {
           this.options.showLabels = !this.options.showLabels;
           this.redraw();
         },
-        isChecked: () => {
-          return this.options.showLabels;
-        },
+        isChecked: () => this.options.showLabels,
         title: 'Show Labels',
         type: 'checkbox',
       }),

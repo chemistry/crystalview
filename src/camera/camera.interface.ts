@@ -1,4 +1,4 @@
-import { Vec3 } from '@chemistry/math';
+import { type Vec3 } from '@chemistry/math';
 
 export interface ICamera {
   onInit(): void;

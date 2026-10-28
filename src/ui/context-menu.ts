@@ -1,4 +1,4 @@
-import { ContextMenuItem } from './ContextMenuItem.js';
+import { type ContextMenuItem } from './context-menu-item.js';
 
 export class ContextMenu {
   private static initDone: boolean;

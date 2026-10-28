@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { Molecule3D } from '../Molecule3D.js';
-import { MoleculeReaderJCIF } from './MoleculeReaderJCIF.js';
+import { Molecule3D } from '../molecule3d.js';
+import { MoleculeReaderJCIF } from './molecule-reader-jcif.js';
 
 describe('MoleculeReaderJCIF', () => {
   it('should have correct metadata', () => {

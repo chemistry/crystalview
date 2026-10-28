@@ -1,6 +1,6 @@
-import { Vec3 } from '@chemistry/math';
-import { Matrix3x4 } from '@chemistry/math';
-import { CellAtom } from './CellAtom.js';
+import { type Vec3 } from '@chemistry/math';
+import { type Matrix3x4 } from '@chemistry/math';
+import { type CellAtom } from './cell-atom.js';
 
 export class Link {
   public atom: CellAtom;
