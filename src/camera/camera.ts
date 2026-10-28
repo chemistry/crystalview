@@ -1,5 +1,5 @@
 import { Transform3D, Vec3 } from '@chemistry/math';
-import { type ICamera } from './ICamera.js';
+import { type ICamera } from './camera.interface.js';
 
 const radStep = 0.012;
 

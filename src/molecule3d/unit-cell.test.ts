@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { Matrix3x4, Vec3 } from '@chemistry/math';
 import { SpaceGroup } from '@chemistry/space-groups';
-import { UnitCell } from './UnitCell.js';
+import { UnitCell } from './unit-cell.js';
 
 describe('UnitCell', () => {
   describe('getMatrixFromSymetry', () => {

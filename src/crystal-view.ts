@@ -1,8 +1,8 @@
-import { Camera } from './camera/Camera.js';
-import { Molecule3D } from './molecule3d/Molecule3D.js';
-import { Painter } from './painter/Painter.js';
-import { ContextMenu } from './ui/ContextMenu.js';
-import { ContextMenuItem } from './ui/ContextMenuItem.js';
+import { Camera } from './camera/camera.js';
+import { Molecule3D } from './molecule3d/molecule3d.js';
+import { Painter } from './painter/painter.js';
+import { ContextMenu } from './ui/context-menu.js';
+import { ContextMenuItem } from './ui/context-menu-item.js';
 
 export class Mol3DView {
   private viewElement!: HTMLDivElement;

@@ -1,11 +1,11 @@
 import { type Matrix3x4, type Vec3 } from '@chemistry/math';
-import { type Atom } from './Atom.js';
-import { Bond } from './Bond.js';
-import { type CellAtom } from './CellAtom.js';
-import { Marker } from './Marker.js';
-import { MarkerContact } from './MarkerContact.js';
-import { type Molecule3D } from './Molecule3D.js';
-import { UnitCell } from './UnitCell.js';
+import { type Atom } from './atom.js';
+import { Bond } from './bond.js';
+import { type CellAtom } from './cell-atom.js';
+import { Marker } from './marker.js';
+import { MarkerContact } from './marker-contact.js';
+import { type Molecule3D } from './molecule3d.js';
+import { UnitCell } from './unit-cell.js';
 
 export class MoleculeBuilder {
   private molecule: Molecule3D;

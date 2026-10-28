@@ -1,8 +1,8 @@
 import { describe, it, expect, vi } from 'vitest';
 import { Vec3 } from '@chemistry/math';
-import { Molecule3D } from '../molecule3d/Molecule3D.js';
-import { Painter } from './Painter.js';
-import { Camera } from '../camera/Camera.js';
+import { Molecule3D } from '../molecule3d/molecule3d.js';
+import { Painter } from './painter.js';
+import { Camera } from '../camera/camera.js';
 
 function createMockContext() {
   const canvas = { width: 800, height: 600 };

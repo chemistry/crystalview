@@ -1,5 +1,5 @@
 import { describe, it, expect, vi } from 'vitest';
-import { CanvasContext } from './CanvasContext.js';
+import { CanvasContext } from './canvas-context.js';
 
 function createMockContext() {
   const canvas = { width: 800, height: 600 };

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { Molecule3D } from './Molecule3D.js';
+import { Molecule3D } from './molecule3d.js';
 
 describe('MoleculeConnector', () => {
   it('should build connectivity for a loaded molecule', () => {

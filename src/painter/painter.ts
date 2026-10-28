@@ -1,8 +1,8 @@
 import { Vec3 } from '@chemistry/math';
-import type { ICamera } from '../camera/ICamera.js';
-import { type Marker } from '../molecule3d/Marker.js';
-import { type Molecule3D } from '../molecule3d/Molecule3D.js';
-import { CanvasContext } from './CanvasContext.js';
+import type { ICamera } from '../camera/camera.interface.js';
+import { type Marker } from '../molecule3d/marker.js';
+import { type Molecule3D } from '../molecule3d/molecule3d.js';
+import { CanvasContext } from './canvas-context.js';
 
 const ATOM_RADIUS_FACTOR = 0.25;
 

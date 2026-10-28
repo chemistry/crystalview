@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { Vec3 } from '@chemistry/math';
-import { Molecule3D } from './Molecule3D.js';
+import { Molecule3D } from './molecule3d.js';
 
 describe('Molecule3D', () => {
   it('should create empty molecule', () => {

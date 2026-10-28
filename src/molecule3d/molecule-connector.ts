@@ -1,6 +1,6 @@
 import { Vec3 } from '@chemistry/math';
-import { type CellAtom } from './CellAtom.js';
-import { type Molecule3D } from './Molecule3D.js';
+import { type CellAtom } from './cell-atom.js';
+import { type Molecule3D } from './molecule3d.js';
 
 const CW_BOND_FROM = 0.4;
 const CW_BOND_TO = 1.2;

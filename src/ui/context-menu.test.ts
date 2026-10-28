@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-import { ContextMenu } from './ContextMenu.js';
-import { ContextMenuItem } from './ContextMenuItem.js';
+import { ContextMenu } from './context-menu.js';
+import { ContextMenuItem } from './context-menu-item.js';
 
 describe('ContextMenu', () => {
   it('should create context menu with items', () => {

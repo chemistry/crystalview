@@ -1,6 +1,6 @@
 import { describe, it, expect, vi } from 'vitest';
 import { Vec3 } from '@chemistry/math';
-import { Camera } from './Camera.js';
+import { Camera } from './camera.js';
 
 function createMockElement() {
   const listeners: Record<string, ((e: any) => void)[]> = {};

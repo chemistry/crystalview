@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
-import { Molecule3D } from './Molecule3D.js';
-import { UnitCell } from './UnitCell.js';
+import { Molecule3D } from './molecule3d.js';
+import { UnitCell } from './unit-cell.js';
 
 describe('MoleculeBuilder', () => {
   function createLoadedMolecule() {

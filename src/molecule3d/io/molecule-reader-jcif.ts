@@ -1,7 +1,7 @@
 import { SpaceGroup } from '@chemistry/space-groups';
-import { type Molecule3D } from '../Molecule3D.js';
-import { UnitCell } from '../UnitCell.js';
-import { type IMoleculeReader } from './IMoleculeReader.js';
+import { type Molecule3D } from '../molecule3d.js';
+import { UnitCell } from '../unit-cell.js';
+import { type IMoleculeReader } from './molecule-reader.interface.js';
 
 interface JcifData {
   a: string;
